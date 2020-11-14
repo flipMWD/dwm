@@ -45,7 +45,7 @@ static const Layout layouts[] = {
 	{ ">M>",      centeredfloatingmaster },
 
 	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
+	{ "[D]",      deck },
 
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 };
