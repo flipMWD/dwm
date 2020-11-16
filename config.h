@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#include "push.c"
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -73,6 +75,8 @@ static Key keys[] = {
 	{ MODKEY,                   XK_b,           togglebar,      {0} },
 	{ MODKEY,                   XK_j,           focusstack,     {.i = +1 } },
 	{ MODKEY,                   XK_k,           focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,         XK_j,           pushdown,       {0} },
+	{ MODKEY|ShiftMask,         XK_k,           pushup,         {0} },
 	{ MODKEY|ShiftMask,         XK_period,      incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,         XK_comma,       incnmaster,     {.i = -1 } },
 	{ MODKEY,                   XK_h,           setmfact,       {.f = -0.08} },
