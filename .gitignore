@@ -1,2 +1,4 @@
+config.def.h
+
 dwm
 *.o
