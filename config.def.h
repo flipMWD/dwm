@@ -3,12 +3,14 @@
 #include <X11/XF86keysym.h>
 #include "push.c"
 
+#define TERM "urxvt"
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "xft:Bitstream Vera Sans:size=10" };
+static const char *fonts[]          = { "xft:Bitstream Vera Sans:size=10", "FontAwesome:style=Regular:size=9" };
 static const char dmenufont[]       = "xft:Bitstream Vera Sans:size=10";
 static const char normfg[]          = "#bbbbbb";
 static const char normbg[]          = "#191b1c";
@@ -78,7 +80,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbg, "-nf", normfg, "-sb", selebg, "-sf", selefg, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
+static const char *termcmd[]  = { TERM , NULL };
 
 static Key keys[] = {
 	/* modifier                 key             function        argument */
@@ -133,12 +135,12 @@ static Key keys[] = {
 	{ MODKEY,                   XK_F6,          spawn,          SHCMD("pkill picom ; sleep 2 ; picom -CGb") },
 	{ 0, XK_ISO_Next_Group,     spawn,          SHCMD("pkill -SIGRTMIN+12 dwmblocks") },
 
-	{ 0, XF86XK_Explorer,       spawn,          SHCMD("vifm . /") },
+	{ 0, XF86XK_Explorer,       spawn,          SHCMD(TERM " -e vifm ~ /") },
 	{ 0, XF86XK_Calculator,     spawn,          SHCMD("qalculate-gtk") },
 	{ 0, XF86XK_HomePage,       spawn,          SHCMD("$BROWSER") },
 	{ 0, XF86XK_AudioPlay,      spawn,          SHCMD("playerctl play-pause") },
 	{ 0, XF86XK_AudioNext,      spawn,          SHCMD("playerctl next") },
-	{ 0, XF86XK_AudioPrev,      spawn,          SHCMD("playerctl prev") },
+	{ 0, XF86XK_AudioPrev,      spawn,          SHCMD("playerctl previous") },
 	{ 0, XF86XK_AudioMute,      spawn,          SHCMD("~/scripts/pactl_sink_volume    ; pkill -SIGRTMIN+10 dwmblocks") },
 	{ 0, XF86XK_AudioLowerVolume,   spawn,      SHCMD("~/scripts/pactl_sink_volume -m ; pkill -SIGRTMIN+10 dwmblocks") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,      SHCMD("~/scripts/pactl_sink_volume -p ; pkill -SIGRTMIN+10 dwmblocks") },
