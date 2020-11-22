@@ -135,7 +135,7 @@ static Key keys[] = {
 	{ MODKEY,                   XK_F6,          spawn,          SHCMD("pkill picom ; sleep 2 ; picom -CGb") },
 	{ 0, XK_ISO_Next_Group,     spawn,          SHCMD("pkill -SIGRTMIN+12 dwmblocks") },
 
-	{ 0, XF86XK_Explorer,       spawn,          SHCMD(TERM " -e vifm ~ /") },
+	{ 0, XF86XK_Explorer,       spawn,          SHCMD(TERM " -e ~/.config/vifm/scripts/vifmrun ~ /") },
 	{ 0, XF86XK_Calculator,     spawn,          SHCMD("qalculate-gtk") },
 	{ 0, XF86XK_HomePage,       spawn,          SHCMD("$BROWSER") },
 	{ 0, XF86XK_AudioPlay,      spawn,          SHCMD("playerctl play-pause") },
