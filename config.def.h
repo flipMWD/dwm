@@ -126,6 +126,7 @@ static Key keys[] = {
 	{ MODKEY,                   XK_b,           togglebar,      {0} },
 	{ MODKEY,                   XK_y,           killclient,     {0} },
 	{ MODKEY|ShiftMask,         XK_q,           quit,           {0} },
+	{ MODKEY|ShiftMask,         XK_y,           spawn,          SHCMD("dmenuexit") },
 
 	{ 0,                        XK_Print,       spawn,          SHCMD("i3-scrot") },
 	{ MODKEY,                   XK_Print,       spawn,          SHCMD("i3-scrot -w") },
