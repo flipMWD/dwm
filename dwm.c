@@ -1622,7 +1622,6 @@ setcfact(const Arg *arg) {
 	arrange(selmon);
 }
 
-
 void
 setup(void)
 {
@@ -1686,13 +1685,12 @@ setup(void)
 	wa.cursor = cursor[CurNormal]->cursor;
 	wa.event_mask = SubstructureRedirectMask|SubstructureNotifyMask
 		|ButtonPressMask|PointerMotionMask|EnterWindowMask
-		|LeaveWindowMask|StructureNotifyMask|PropertyChangeMask;
+		|LeaveWindowMask|StructureNotifyMask|PropertyChangeMask|KeyPressMask;
 	XChangeWindowAttributes(dpy, root, CWEventMask|CWCursor, &wa);
 	XSelectInput(dpy, root, wa.event_mask);
 	grabkeys();
 	focus(NULL);
 }
-
 
 void
 seturgent(Client *c, int urg)
