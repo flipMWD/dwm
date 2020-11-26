@@ -3,7 +3,7 @@
 #include <X11/XF86keysym.h>
 #include "push.c"
 
-#define TERM "urxvt"
+#define TERM "st"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
