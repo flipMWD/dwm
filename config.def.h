@@ -128,12 +128,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,         XK_q,           quit,           {0} },
 	{ MODKEY|ShiftMask,         XK_y,           spawn,          SHCMD("dmenuexit") },
 
-	{ 0,                        XK_Print,       spawn,          SHCMD("i3-scrot") },
-	{ MODKEY,                   XK_Print,       spawn,          SHCMD("i3-scrot -w") },
-	{ MODKEY|ShiftMask,         XK_Print,       spawn,          SHCMD("i3-scrot -s") },
+	{ 0,                        XK_Print,       spawn,          SHCMD("dwmscrot -d") },
+	{ MODKEY,                   XK_Print,       spawn,          SHCMD("dwmscrot -w") },
 	{ MODKEY|ShiftMask,         XK_x,           spawn,          SHCMD("xkill") },
-	{ MODKEY,                   XK_F8,          spawn,          SHCMD("qbittorrent") },
-	{ MODKEY,                   XK_F6,          spawn,          SHCMD("pkill picom ; sleep 2 ; picom -CGb") },
+	{ MODKEY,                   XK_F8,          spawn,          SHCMD("pkill picom ; sleep 2 ; picom -CGb") },
 	{ 0, XK_ISO_Next_Group,     spawn,          SHCMD("pkill -SIGRTMIN+12 dwmblocks") },
 
 	{ 0, XF86XK_Explorer,       spawn,          SHCMD(TERM " -e ~/.config/vifm/scripts/vifmrun ~ /") },
