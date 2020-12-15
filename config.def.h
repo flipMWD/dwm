@@ -10,7 +10,10 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "xft:Bitstream Vera Sans:size=10", "FontAwesome:style=Regular:size=9" };
+static const char *fonts[]          = {
+	"xft:Bitstream Vera Sans:size=10",
+	"FontAwesome:style=Regular:size=9",
+};
 static const char dmenufont[]       = "xft:Bitstream Vera Sans:size=10";
 static const char normfg[]          = "#bbbbbb";
 static const char normbg[]          = "#191b1c";
@@ -128,21 +131,46 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,         XK_q,           quit,           {0} },
 	{ MODKEY|ShiftMask,         XK_y,           spawn,          SHCMD("dmenuexit") },
 
+	/* ~/scripts/dwm-executer */
+	{ MODKEY,                   XK_q,           spawn,          SHCMD("dwmexecuter -q") },
+	{ MODKEY,                   XK_w,           spawn,          SHCMD("dwmexecuter -w") },
+	{ MODKEY,                   XK_e,           spawn,          SHCMD("dwmexecuter -e") },
+	{ MODKEY,                   XK_r,           spawn,          SHCMD("dwmexecuter -r") },
+	{ MODKEY,                   XK_a,           spawn,          SHCMD("dwmexecuter -a") },
+	{ MODKEY,                   XK_s,           spawn,          SHCMD("dwmexecuter -s") },
+	{ MODKEY,                   XK_d,           spawn,          SHCMD("dwmexecuter -d") },
+	{ MODKEY,                   XK_f,           spawn,          SHCMD("dwmexecuter -f") },
+	{ MODKEY,                   XK_z,           spawn,          SHCMD("dwmexecuter -z") },
+	{ MODKEY,                   XK_x,           spawn,          SHCMD("dwmexecuter -x") },
+	{ MODKEY,                   XK_c,           spawn,          SHCMD("dwmexecuter -c") },
+	{ MODKEY,                   XK_v,           spawn,          SHCMD("dwmexecuter -v") },
+	{ MODKEY,                   XK_1,           spawn,          SHCMD("dwmexecuter -1") },
+	{ MODKEY,                   XK_2,           spawn,          SHCMD("dwmexecuter -2") },
+	{ MODKEY,                   XK_3,           spawn,          SHCMD("dwmexecuter -3") },
+	{ MODKEY,                   XK_4,           spawn,          SHCMD("dwmexecuter -4") },
+	{ MODKEY,                   XK_5,           spawn,          SHCMD("dwmexecuter -5") },
+	{ MODKEY,                   XK_6,           spawn,          SHCMD("dwmexecuter -6") },
+	{ MODKEY,                   XK_7,           spawn,          SHCMD("dwmexecuter -7") },
+	{ MODKEY,                   XK_8,           spawn,          SHCMD("dwmexecuter -8") },
+	{ MODKEY,                   XK_9,           spawn,          SHCMD("dwmexecuter -9") },
+	{ MODKEY,                   XK_0,           spawn,          SHCMD("dwmexecuter -0") },
+
 	{ 0,                        XK_Print,       spawn,          SHCMD("dwmscrot -d") },
 	{ MODKEY,                   XK_Print,       spawn,          SHCMD("dwmscrot -w") },
 	{ MODKEY|ShiftMask,         XK_x,           spawn,          SHCMD("xkill") },
-	{ MODKEY,                   XK_F8,          spawn,          SHCMD("pkill picom ; sleep 2 ; picom -CGb") },
+	{ MODKEY,                   XK_F7,          spawn,          SHCMD(TERM " -e alsamixer") },
+	{ MODKEY,                   XK_F8,          spawn,          SHCMD("pkill picom ; sleep 1 ; picom -CGb") },
 	{ 0, XK_ISO_Next_Group,     spawn,          SHCMD("pkill -SIGRTMIN+12 dwmblocks") },
 
-	{ 0, XF86XK_Explorer,       spawn,          SHCMD(TERM " -e ~/.config/vifm/scripts/vifmrun ~ /") },
+	{ 0, XF86XK_Explorer,       spawn,          SHCMD(TERM " -e vifmrun ~ /") },
 	{ 0, XF86XK_Calculator,     spawn,          SHCMD("qalculate-gtk") },
 	{ 0, XF86XK_HomePage,       spawn,          SHCMD("$BROWSER") },
 	{ 0, XF86XK_AudioPlay,      spawn,          SHCMD("playerctl play-pause") },
 	{ 0, XF86XK_AudioNext,      spawn,          SHCMD("playerctl next") },
 	{ 0, XF86XK_AudioPrev,      spawn,          SHCMD("playerctl previous") },
-	{ 0, XF86XK_AudioMute,      spawn,          SHCMD("~/scripts/pactl_sink_volume    ; pkill -SIGRTMIN+10 dwmblocks") },
-	{ 0, XF86XK_AudioLowerVolume,   spawn,      SHCMD("~/scripts/pactl_sink_volume -m ; pkill -SIGRTMIN+10 dwmblocks") },
-	{ 0, XF86XK_AudioRaiseVolume,   spawn,      SHCMD("~/scripts/pactl_sink_volume -p ; pkill -SIGRTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioMute,      spawn,          SHCMD("set-pavolume    ; pkill -SIGRTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,      SHCMD("set-pavolume -m ; pkill -SIGRTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,      SHCMD("set-pavolume -p ; pkill -SIGRTMIN+10 dwmblocks") },
 };
 
 /* button definitions */
