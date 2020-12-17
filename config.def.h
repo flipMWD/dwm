@@ -115,8 +115,8 @@ static Key keys[] = {
 	{ MODKEY,                   XK_n,           togglefloating, {0} },
 	{ MODKEY|ShiftMask,         XK_slash,       togglefullscr,  {0} },
 
-	{ MODKEY,                   XK_0,           view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,         XK_0,           tag,            {.ui = ~0 } },
+	{ MODKEY,                   XK_equal,       view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,         XK_equal,       tag,            {.ui = ~0 } },
 	TAGKEYS(                    XK_u,                           0)
 	TAGKEYS(                    XK_i,                           1)
 	TAGKEYS(                    XK_o,                           2)
