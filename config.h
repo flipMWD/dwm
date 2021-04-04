@@ -42,6 +42,7 @@ static const Rule rules[] = {
 	{ "Gimp",           NULL,       NULL,       1 << 3,     0,          -1 },
 	{ "Inkscape",       NULL,       NULL,       1 << 3,     0,          -1 },
 	{ "krita",          NULL,       NULL,       1 << 3,     0,          -1 },
+	{ "LBRY",           NULL,       NULL,       1 << 3,     0,          -1 },
 	{ "Lxappearance",   NULL,       NULL,       0,          1,          -1 },
 	{ "Piper",          NULL,       NULL,       0,          1,          -1 },
 	{ "Qalculate-gtk",  NULL,       NULL,       0,          1,          -1 },
