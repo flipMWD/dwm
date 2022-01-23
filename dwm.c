@@ -1301,7 +1301,9 @@ moveresize(const Arg *arg)
 	{
 		nmx = c->x - ox + c->w - ow;
 		nmy = c->y - oy + c->h - oh;
-		XWarpPointer(dpy, None, None, 0, 0, 0, 0, nmx, nmy);
+		/* make sure the cursor stays inside the window */
+		if ((msx + nmx) > c->x && (msy + nmy) > c->y)
+			XWarpPointer(dpy, None, None, 0, 0, 0, 0, nmx, nmy);
 	}
 }
 
@@ -1312,7 +1314,7 @@ moveresizeedge(const Arg *arg)
 	Client *c;
 	c = selmon->sel;
 	char e;
-	int nx, ny, nw, nh, ox, oy, ow, oh;
+	int nx, ny, nw, nh, ox, oy, ow, oh, bp;
 	int msx, msy, dx, dy, nmx, nmy;
 	int starty;
 	unsigned int dui;
@@ -1323,7 +1325,8 @@ moveresizeedge(const Arg *arg)
 	nw = c->w;
 	nh = c->h;
 
-	starty = selmon->showbar ? bh : 0;
+	starty = selmon->showbar && topbar ? bh : 0;
+	bp = selmon->showbar && !topbar ? bh : 0;
 
 	if (!c || !arg)
 		return;
@@ -1363,13 +1366,13 @@ moveresizeedge(const Arg *arg)
 		ny = starty;
 
 	if(e == 'b')
-		ny = c->h > selmon->mh - 2 * c->bw ? c->h : selmon->mh - c->h - 2 * c->bw;
+		ny = c->h > selmon->mh - 2 * c->bw ? c->h - bp : selmon->mh - c->h - 2 * c->bw - bp;
 
 	if(e == 'l')
-		nx = 0;
+		nx = selmon->mx;
 
 	if(e == 'r')
-		nx = c->w > selmon->mw - 2 * c->bw ? c->w : selmon->mw - c->w - 2 * c->bw;
+		nx = c->w > selmon->mw - 2 * c->bw ? selmon->mx + c->w : selmon->mx + selmon->mw - c->w - 2 * c->bw;
 
 	if(e == 'T') {
 		/* if you click to resize again, it will return to old size/position */
@@ -1383,20 +1386,20 @@ moveresizeedge(const Arg *arg)
 	}
 
 	if(e == 'B')
-		nh = c->h + c->y + 2 * c->bw == selmon->mh ? c->oldh : selmon->mh - c->y - 2 * c->bw;
+		nh = c->h + c->y + 2 * c->bw + bp == selmon->mh ? c->oldh : selmon->mh - c->y - 2 * c->bw - bp;
 
 	if(e == 'L') {
-		if(c->w == c->oldw + c->oldx) {
+		if(selmon->mx + c->w == c->oldw + c->oldx) {
 			nw = c->oldw;
 			nx = c->oldx;
 		} else {
-			nw = c->w + c->x;
-			nx = 0;
+			nw = c->w + c->x - selmon->mx;
+			nx = selmon->mx;
 		}
 	}
 
 	if(e == 'R')
-		nw = c->w + c->x + 2 * c->bw == selmon->mw ? c->oldw : selmon->mw - c->x - 2 * c->bw;
+		nw = c->w + c->x + 2 * c->bw == selmon->mx + selmon->mw ? c->oldw : selmon->mx + selmon->mw - c->x - 2 * c->bw;
 
 	ox = c->x;
 	oy = c->y;
@@ -1411,7 +1414,9 @@ moveresizeedge(const Arg *arg)
 	if (xqp && ox <= msx && (ox + ow) >= msx && oy <= msy && (oy + oh) >= msy) {
 		nmx = c->x - ox + c->w - ow;
 		nmy = c->y - oy + c->h - oh;
-		XWarpPointer(dpy, None, None, 0, 0, 0, 0, nmx, nmy);
+		/* make sure the cursor stays inside the window */
+		if ((msx + nmx) > c->x && (msy + nmy) > c->y)
+			XWarpPointer(dpy, None, None, 0, 0, 0, 0, nmx, nmy);
 	}
 }
 
